@@ -4,7 +4,7 @@ export function userReducer(state={}, action){
 
   const newState = {...state};
   switch(action.type){
-    
+      
 
       case actionType.GET_BIDDED_PROJECTS_SUCCESS : newState.projectsBiddedByMe = action.payload.projectsBiddedByMe;
                                                     return newState;
