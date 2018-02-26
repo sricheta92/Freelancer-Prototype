@@ -12,7 +12,7 @@ export function userReducer(state={}, action){
                                                     return newState;
 
       case actionType.DASHBOARD_VIEW_TYPE : newState.dashboardViewisWorker = action.data;
-                                            return newState;    
+                                            return newState;
 
       case actionType.GET_POSTED_PROJECTS_SUCCESS : newState.projectsPostedByMe = action.payload.projectsPostedByMe;
                                                     return newState;
