@@ -6,7 +6,7 @@ class App extends Component {
   state = {
     response: ''
   };
-
+/*
   componentDidMount() {
      this.callApi()
        .then(res => this.setState({ response: res.express }))
@@ -20,7 +20,7 @@ class App extends Component {
      if (response.status !== 200) throw Error(body.message);
 
      return body;
-  };
+  }; */
   render() {
     return (
        <NavBar/>

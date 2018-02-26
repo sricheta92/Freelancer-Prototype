@@ -1,0 +1,23 @@
+body{
+    font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
+      line-height: 1.4;
+}
+.logo{
+  width: 168px;
+}
+.a-logo{
+  margin :0;
+  padding: 0;
+}
+.navbar-default{
+  background-color: white;
+
+}
+.navbar-default .navbar-nav>li>a{
+    color: black;
+    line-height: 26px;
+    font-size: large;
+}
+.comment-icon{
+  font-size:23px;
+}
