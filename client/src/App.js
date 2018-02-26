@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import NavBar from './components/NavBar';
-
+import NavBar1 from './components/NavBar1';
+import NavBar2 from './components/NavBar2';
 class App extends Component {
 
   state = {
@@ -23,7 +23,10 @@ class App extends Component {
   }; */
   render() {
     return (
-       <NavBar/>
+      <div>
+       <NavBar1 />
+       <NavBar2 />
+       </div>
     );
   }
 }
