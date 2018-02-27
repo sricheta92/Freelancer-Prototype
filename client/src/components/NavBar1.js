@@ -1,5 +1,6 @@
 import React , { Component} from 'react';
 import jQuery from 'jquery';
+import {Popover} from 'react-bootstrap';
 
 class NavBar1 extends Component{
 
@@ -15,11 +16,21 @@ class NavBar1 extends Component{
             <a className="dropdown-toggle" data-toggle="dropdown" href="#"> Work <span class="caret"></span>
             </a>
                 <ul className="dropdown-menu">
-                  <li><a href="#">Page 1-1</a></li>
+                  {/*<li><a href="#">Page 1-1</a></li>
                   <li><a href="#">Page 1-2</a></li>
-                  <li><a href="#">Page 1-3</a></li>
+                  <li><a href="#">Page 1-3</a></li>*/}
+                  <Popover
+                      id="popover-basic"
+                      placement="bottom"
+                      title="Popover right">
+                      <li><a href="#">Page 1-1</a></li>
+                      <li><a href="#">Page 1-2</a></li>
+                      <li><a href="#">Page 1-3</a></li>
+                    </Popover>
+
                 </ul>
                   {/*<a href="#" title="Dismissible popover" data-toggle="popover" data-trigger="focus" data-content="Click anywhere in the document to close this popover">Click me</a> */}
+
               </li>
 
               <li className="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> My Projects <span class="caret"></span></a>
@@ -57,8 +68,8 @@ class NavBar1 extends Component{
     )
   }
   componentDidMount() {
-  /*  var $j = jQuery.noConflict();
-    $j('[data-toggle="popover"]').popover();*/
+//   var $j = jQuery.noConflict();
+//    $j('[data-toggle="popover"]').popover();
   }
 }
 
