@@ -17,7 +17,7 @@ class NavBeforeLogin extends Component{
               <li><a onClick={() => { this.props.history.push("/login");}}> Log In </a></li>
               <li ><a onClick={() => { this.props.history.push("/signup");}}> Sign Up </a></li>
 
-            
+
          </ul>
        </div>
      </nav>
@@ -56,4 +56,4 @@ class NavBeforeLogin extends Component{
 
 }
 
-export default  withRouter(NavBeforeLogin);
+export default withRouter(NavBeforeLogin);
