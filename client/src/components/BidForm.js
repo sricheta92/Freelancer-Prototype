@@ -81,17 +81,17 @@ class BidForm extends Component{
   render(){
     return(
         <div className = "bidform">
-        <div id="frm_place_bid" class="fl-form" novalidate="novalidate">
-                <legend class="BidProposal-title">Bid Proposal</legend>
+        <div id="frm_place_bid" className="fl-form" novalidate="novalidate">
+                <legend className="BidProposal-title">Bid Proposal</legend>
                 <input type="hidden" name="id" value="16491277"/>
-                <div id="error-messages" class="error hide message alert alert-error"></div>
+                <div id="error-messages" className="error hide message alert alert-error"></div>
                 <div id="membership-low-bids-alert"></div>
-                <div id="bid-stats" class="BidProposal-stats">
-                    <fieldset class="BidProposal-row BidProposal-fieldset">
-                        <div class="form-group col-md-2">
+                <div id="bid-stats" className="BidProposal-stats">
+                    <fieldset className="BidProposal-row BidProposal-fieldset">
+                        <div className="form-group col-md-2">
 
                                 <label for="hourlyrate">Hourly Rate $(USD)</label>
-                                <div class="control-group">
+                                <div className="control-group">
                                     <span class="input-group">
 
                                         <input class="form-control BidProposal-form-input earnedSum" name="sum" type="text" onBlur ={this.handleHourlyRateChange}/>
