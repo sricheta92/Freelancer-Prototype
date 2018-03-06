@@ -92,32 +92,32 @@ class BidForm extends Component{
 
                                 <label for="hourlyrate">Hourly Rate $(USD)</label>
                                 <div className="control-group">
-                                    <span class="input-group">
+                                    <span className="input-group">
 
-                                        <input class="form-control BidProposal-form-input earnedSum" name="sum" type="text" onBlur ={this.handleHourlyRateChange}/>
-                                        <input class="form-control sum actualBidAmount" type="hidden" name="sum" value="22.22"/>
+                                        <input className="form-control BidProposal-form-input earnedSum" name="sum" type="text" onBlur ={this.handleHourlyRateChange}/>
+                                        <input className="form-control sum actualBidAmount" type="hidden" name="sum" value="22.22"/>
                                     </span>
-                                    <span class="small help-inline"></span>
+                                    <span className="small help-inline"></span>
                                 </div>
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div className="form-group col-md-2">
                                 <label for="weeklylimit">Bid Period (in Days)</label>
-                                <div class="control-group">
-                                    <span class="input-group">
-                                        <input class="form-control BidProposal-form-input period" name="period" type="text"  onBlur ={this.handleBidPeriodChange}/>
+                                <div className="control-group">
+                                    <span className="input-group">
+                                        <input className="form-control BidProposal-form-input period" name="period" type="text"  onBlur ={this.handleBidPeriodChange}/>
                                     </span>
-                                    <span class="small help-inline"></span>
+                                    <span className="small help-inline"></span>
                                 </div>
                                 </div>
                                 <br />
-                                <div className="col-md-2" ><button  class="btn btn-primary " onClick={this.handleSubmitBid}>Submit</button></div>
+                                <div className="col-md-2" ><button  className="btn btn-primary " onClick={this.handleSubmitBid}>Submit</button></div>
 
                     </fieldset>
                 </div>
 
                 {this.props.projectBidStatus ?
                 <div id="proposal-panel">
-                  <div class="BidProposal-alert alert alert-success">
+                  <div className="BidProposal-alert alert alert-success">
                           <strong>Your bid was placed successfully!</strong>
                     </div>
                 </div> : null }
