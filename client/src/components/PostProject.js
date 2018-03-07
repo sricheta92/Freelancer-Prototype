@@ -186,7 +186,7 @@ constructor(props){
             <h4><strong>What is your estimated budget?</strong></h4>
             <div>
 
-              <select class="project-budget" id="exampleFormControlSelect1"  onChange={this.budgetChange} value={this.state.budget} required>
+              <select className="project-budget" id="exampleFormControlSelect1"  onChange={this.budgetChange} value={this.state.budget} required>
                 <option>Micro Project ($10 - 30 USD)</option>
                 <option>Simple project ($30 - 250 USD)</option>
                 <option>Very small project ($250 - 750 USD)</option>
