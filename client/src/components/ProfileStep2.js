@@ -99,28 +99,28 @@ class ProfileStep2 extends Component{
               {$imagePreview}
             </div>
             <form ole="form" method="POST" onSubmit = {this.handleComplete}>
-              <div class="CompleteProfile-form">
-                  <div class="form-group CompleteProfile-form-row">
-                      <span class="CompleteProfile-form-header">Full Name</span>
-                      <span class="CompleteProfile-form-input">
-                          <input class="CompleteProfile-form-input-left large-input " value ="Ram" ref= "fname" type="text" placeholder="First Name" required/>
-                          <input class="CompleteProfile-form-input-right large-input " value ="sihngh"  ref= "lname" type="text" placeholder="Last Name" required/>
+              <div className="CompleteProfile-form">
+                  <div className="form-group CompleteProfile-form-row">
+                      <span className="CompleteProfile-form-header">Full Name</span>
+                      <span className="CompleteProfile-form-input">
+                          <input className="CompleteProfile-form-input-left large-input " value ="Ram" ref= "fname" type="text" placeholder="First Name" required/>
+                          <input className="CompleteProfile-form-input-right large-input " value ="sihngh"  ref= "lname" type="text" placeholder="Last Name" required/>
                       </span>
 
                   </div>
-                  <div class="form-group CompleteProfile-form-row">
-                      <span class="CompleteProfile-form-header">Bio and Professional Headline </span>
-                      <span class="CompleteProfile-form-input">
-                          <textarea class="CompleteProfile-form-input-left large-input " value ="Developer"  ref= "bio" type="text" placeholder="Bio" required/>
-                          <input class="CompleteProfile-form-input-right large-input " value ="Frontend engineer" ref= "headline" type="text" placeholder="designation" required/>
+                  <div className="form-group CompleteProfile-form-row">
+                      <span className="CompleteProfile-form-header">Bio and Professional Headline </span>
+                      <span className="CompleteProfile-form-input">
+                          <textarea className="CompleteProfile-form-input-left large-input " value ="Developer"  ref= "bio" type="text" placeholder="Bio" required/>
+                          <input className="CompleteProfile-form-input-right large-input " value ="Frontend engineer" ref= "headline" type="text" placeholder="designation" required/>
                       </span>
 
                   </div>
-                  <div class="form-group CompleteProfile-form-row gap">
-                      <span class="CompleteProfile-form-header">Contact Information</span>
-                      <span class="CompleteProfile-form-input">
-                          <input class="CompleteProfile-form-input-left large-input " type="text"  value = "999-999-9999" ref= "phone" pattern="^\d{3}-\d{3}-\d{4}$"  placeholder="Phone Number (format: xxx-xxx-xxxx)" required />
-                          <input class="CompleteProfile-form-input-right large-input " type="text" value = "San Jose"ref="city" placeholder="City" required/>
+                  <div className="form-group CompleteProfile-form-row gap">
+                      <span className="CompleteProfile-form-header">Contact Information</span>
+                      <span className="CompleteProfile-form-input">
+                          <input className="CompleteProfile-form-input-left large-input " type="text"  value = "999-999-9999" ref= "phone" pattern="^\d{3}-\d{3}-\d{4}$"  placeholder="Phone Number (format: xxx-xxx-xxxx)" required />
+                          <input className="CompleteProfile-form-input-right large-input " type="text" value = "San Jose"ref="city" placeholder="City" required/>
                       </span>
 
                   </div>
