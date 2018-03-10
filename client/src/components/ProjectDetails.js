@@ -66,28 +66,28 @@ render(){
       <FixedNav />
       <div className = "gaf-container" >
       <div id="projectHeader">
-                <div class="project-header-controls span8">
-                    <h1 class="project_name largest bold margin-b5 span12">{this.props.project.project.project_name}</h1>
-                    <div class="span12 margin-0"></div>
+                <div className="project-header-controls span8">
+                    <h1 className="project_name largest bold margin-b5 span12">{this.props.project.project.project_name}</h1>
+                    <div className="span12 margin-0"></div>
                 </div>
-              <div class="clear"></div>
+              <div className="clear"></div>
         </div>
-        <div class="row col-md-12 well well2 white silver span padding-5 align-c margin-t10 margin-l10 margin-b10 PageFreelancerPvp-infoBar-details">
-          <div  class="align-c padding-r10 padding-l5 project-view-status col-md-10">
+        <div className="row col-md-12 well well2 white silver span padding-5 align-c margin-t10 margin-l10 margin-b10 PageFreelancerPvp-infoBar-details">
+          <div  className="align-c padding-r10 padding-l5 project-view-status col-md-10">
               <div>
                   <span className = "col-md-3">
                     <span>Bids</span>
-                    <span id="num-bids" class="text-blue larger bold">{this.props.project.usersBidded.length}</span>
+                    <span id="num-bids" className="text-blue larger bold">{this.props.project.usersBidded.length}</span>
                   </span>
-                  <span  class="col-md-3 align-c padding-l10 padding-r10 border-r border-l project-view-status">
+                  <span  className="col-md-3 align-c padding-l10 padding-r10 border-r border-l project-view-status">
                       <span>Avg Bid (USD)</span>
-                      <div class="text-blue larger bold">
+                      <div className="text-blue larger bold">
                           $<span id="avg-bid">{this.state.averageBid}</span>
                       </div >
                   </span>
-                  <span  class="col-md-3 align-c padding-l10 padding-r5 project-view-status">
+                  <span  className="col-md-3 align-c padding-l10 padding-r5 project-view-status">
                       <div>Project Budget Range</div>
-                      <div class="text-blue bold project-budget">{this.props.project.project.budget_range}</div>
+                      <div className="text-blue bold project-budget">{this.props.project.project.budget_range}</div>
                   </span>
               </div>
               <div>
