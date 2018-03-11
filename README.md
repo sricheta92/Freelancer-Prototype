@@ -28,7 +28,6 @@ Follow the be below steps
 3. you can see the node console
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the Mocha test cases
 
