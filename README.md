@@ -2,6 +2,8 @@
 
 Freelancer like scalable web application developed in MERN Stack
 
+![alt text](screenshots/Capture.PNG "Landing page")
+
 ### Prerequisites
 
 ```
@@ -38,6 +40,6 @@ Follow the be below steps
 ```
 
 
-## Authors
+## Author
 
 * [Sricheta Ruj](https://github.com/sricheta92)
