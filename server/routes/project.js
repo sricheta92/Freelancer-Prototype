@@ -58,12 +58,10 @@
         console.log("select * from project where project_id in ( select distinct(project_id) FROM project_skill ps join skill_user su where ps.skill_id = su.skillid and su.userid = "+ req.params.userId+")");
         connection.query("select * from project where project_id in ( select distinct(project_id) FROM project_skill ps join skill_user su where ps.skill_id = su.skillid and su.userid = "+ req.params.userId+")",  function(err, rows){
           if(err){
-            throw err;
+              throw err;
               res.status(500).send({status:false});
-              
-          }else{
+         }else{
               res.status(200).send({status: true, recommendedProjects : rows });
-
           }
         });
       });
