@@ -60,9 +60,10 @@
           if(err){
             throw err;
               res.status(500).send({status:false});
+              
           }else{
               res.status(200).send({status: true, recommendedProjects : rows });
-              
+
           }
         });
       });
