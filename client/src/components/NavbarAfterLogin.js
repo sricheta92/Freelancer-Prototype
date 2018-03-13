@@ -2,6 +2,7 @@ import  React , { Component} from 'react';
 import {Popover} from 'react-bootstrap';
 import NavBar2 from './NavBar2';
 import PostProject from './PostProject';
+import ProjectFeedItem from './ProjectFeedItem';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getRecommendedProjects } from '../actions'
@@ -120,7 +121,13 @@ class NavbarAfterLogin extends Component{
         Welcome {this.props.username}
         <div class="panel panel-primary col-md-8 col-offset-md-4 ">
           <div class="panel-heading ">Job Feed</div>
-          <div class="panel-body ">Panel Content</div>
+          {this.props.recommendedProjects ?
+          <div class="panel-body ">
+            {this.props.recommendedProjects.map(project =>
+              <ProjectFeedItem projectfeeditem = {project}/> )}
+          </div>
+          : <div class="panel-body ">Add skills to get job feed</div>}
+
         </div>
 
       </div>
