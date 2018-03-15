@@ -718,6 +718,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
 
  .gaf-container .span8 {
     width: 600px;
+    margin-left: 2%;
 }
 
 .gaf-container  h1.project_name {
@@ -807,4 +808,7 @@ ol.progtrckr li.progtrckr-done:hover:before {
 .well2{
   display: -webkit-inline-box;
 
+}
+#num-bids{
+  display: block;
 }

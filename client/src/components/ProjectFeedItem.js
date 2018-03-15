@@ -34,11 +34,11 @@ class ProjectFeedItem extends Component{
     return(
       <div className ="news-list-wrapper">
         <a onClick={this.navigateToProjectDetails}><h4 className = "" >
-          {this.props.projectfeeditem.project_name}
+          {this.props.projectfeeditem.project.project_name}
         </h4></a>
         <button className = "btn btn-success pull-right">Bid Now!</button>
-        <span> {this.props.projectfeeditem.budget_range}</span>
-        <div>  {this.props.projectfeeditem.description}</div>
+        <span> {this.props.projectfeeditem.project.budget_range}</span>
+        <div>  {this.props.projectfeeditem.project.description}</div>
         {this.props.projectskills ? this.props.projectskills.map( skill => <div>{skill.name}</div>) : null}
         <span>{this.props.postedBy.username}</span>
       </div>
