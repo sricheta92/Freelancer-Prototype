@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        project : state.postProjectReducer.project
+      //  project : state.postProjectReducer.project
     }
 }
 
@@ -27,8 +27,7 @@ class ProjectFeedItem extends Component{
 
   navigateToProjectDetails()  {
     this.props.dispatch(this.props.getProjectDetails(this.props.projectfeeditem))
-    .then(()=>this.props.history.push("/projectDetails"));
-
+    this.props.history.push("/projectDetails");
   }
 
   render(){

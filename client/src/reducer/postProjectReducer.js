@@ -59,7 +59,7 @@ export function postProjectReducer(state, action){
   case actionType.GET_SKILLS_OF_PROJECT_FAILURE : newState.skillsRequiredByProject = [];
                                                     return newState;
 
-  case actionType.GET_PROJECT_DETAILS_SUCCESS : newState.project = action.payload;
+  case actionType.GET_PROJECT_DETAILS_SUCCESS : newState.project = action.data;
                                                 return newState;
 
      default : return newState;

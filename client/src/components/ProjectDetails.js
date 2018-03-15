@@ -23,6 +23,13 @@ class ProjectDetails extends Component{
     super(props);
   }
 
+  static defaultProps = {
+     project: {
+       projectname :'',
+
+     }
+  }
+
 render(){
   return(
     <div>

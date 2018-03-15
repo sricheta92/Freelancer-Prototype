@@ -277,7 +277,7 @@ export function getRecommendedProjects(props){
 
 export function getProjectDetails(data) {
     return {
-        type: actionType.GET_PROJECT_DETAILS_SUCCESS,
-        payload :data
+      type: actionType.GET_PROJECT_DETAILS_SUCCESS,
+      data
     }
   }
