@@ -54,18 +54,75 @@
 
 
   router.get("/mapRecommendedProjects/:userId" ,function(req,res){
+    var arr = [];
+    var arr1 = [];
       pool.getConnection(function(err, connection){
-        console.log("select * from project where project_id in ( select distinct(project_id) FROM project_skill ps join skill_user su where ps.skill_id = su.skillid and su.userid = "+ req.params.userId+")");
         connection.query("select * from project where project_id in ( select distinct(project_id) FROM project_skill ps join skill_user su where ps.skill_id = su.skillid and su.userid = "+ req.params.userId+")",  function(err, rows){
+        connection.release();//release the connection
           if(err){
               throw err;
               res.status(500).send({status:false});
          }else{
-              res.status(200).send({status: true, recommendedProjects : rows });
+
+           rows.map((row,index) => {
+             var arr1=[];
+             console.log(row.project_id);
+             connection.query("select  * from skill s join project_skill ps on s.skill_id= ps.skill_id where ps.project_id = '" + row.project_id+ "';",  function(err, rows1){
+              // connection.release();//release the connection
+            // console.log(rows1);
+                 rows1.map((row1) => {
+                     arr1.push({id : row1.skill_id, name : row1.skill_name});
+                  });
+                //  arr.push({project: row, skills : arr1});
+
+             });
+
+             connection.query("select * from user u join project_user pu on u.userid = pu.user_id where pu.Role = 'Employer' and project_id = "+row.project_id +";",function(err,rows2){
+               if(rows2 != undefined && rows2.length >0){
+                 console.log(rows2.length);
+                   arr.push({project: row, skills : arr1, postedBy : rows2[0]});
+                   if(index === rows.length-1){
+                      if(err) throw err;
+                      res.status(200).send({projectsWithSkills: arr});
+                    }
+                 }
+             });
+         });
+
+          //    res.status(200).send({status: true, recommendedProjects : rows });
           }
         });
       });
   });
+
+
+    router.get("/getWhoPostedTheProject/:projectId" ,function(req,res){
+        pool.getConnection(function(err, connection){
+          connection.query("select * from user u join project_user pu on u.userid = pu.user_id where pu.Role = 'Employer' and project_id = "+ req.params.projectId+";",  function(err, rows){
+            connection.release();//release the connection
+            if(err){
+                throw err;
+                res.status(500).send({status:false});
+           }else{
+                res.status(200).send({status: true, postedBy : rows[0] });
+            }
+          });
+        });
+    });
+
+    router.get("/getSkills/:projectId" ,function(req,res){
+        pool.getConnection(function(err, connection){
+          connection.query("select skill_name from skill s join project_skill ps on s.skill_id = ps.skill_id where project_id = "+ req.params.projectId+";",  function(err, rows){
+            connection.release();//release the connection
+            if(err){
+                throw err;
+                res.status(500).send({status:false});
+           }else{
+                res.status(200).send({status: true, skillsRequiredByProject : rows });
+            }
+          });
+        });
+    });
 
   router.post("/mapFilesToProject",function(req,res){
 
@@ -143,5 +200,7 @@
 
     });
   });
+
+
 
   module.exports = router;

@@ -13,7 +13,7 @@
   });
 
   function checkUser(reqUserOrEmail,reqPassword, req,res) {
-      debugger
+
         pool.getConnection(function(err, connection){
             connection.query(" select * from user where ( username ='" + reqUserOrEmail+"' or email = '"+reqUserOrEmail+"' ) and password = '"+ reqPassword+"';",  function(err, rows){
                 connection.release();

@@ -706,3 +706,105 @@ ol.progtrckr li.progtrckr-done:hover:before {
  .alert-file{
    margin-top: 10px;
  }
+ .news-feed {
+   margin-left: 50px;
+ }
+ .news-feed .news-list-wrapper {
+     position: relative;
+     padding-bottom: 16px;
+     margin-bottom: 16px;
+     border-bottom: 1px solid #DEDEDE;
+ }
+
+ .gaf-container .span8 {
+    width: 600px;
+}
+
+.gaf-container  h1.project_name {
+    float: left;
+    margin-right: 4px;
+    margin-left: 1px;
+    word-wrap: break-word;
+}
+.gaf-container .well.white {
+    background: #FFF;
+}
+.gaf-container .well.silver {
+    border: #DEDEDE solid 1px;
+}
+.gaf-container .PageFreelancerPvp-infoBar-details {
+    border: 0!important;
+    box-shadow: none!important;
+}
+.gaf-container .well {
+    min-height: 0;
+}
+.gaf-container .padding-5 {
+    padding: 5px!important;
+}
+.gaf-container .margin-l10 {
+    margin-left: 10px!important;
+}
+.gaf-container .margin-b10 {
+    margin-bottom: 10px!important;
+}
+.gaf-container .margin-t10 {
+    margin-top: 10px!important;
+}
+.gaf-container .align-c {
+    /* text-align: center!important; */
+}
+.gaf-container .padding-l5 {
+    padding-left: 5px!important;
+}
+.gaf-container .padding-r10 {
+    padding-right: 10px!important;
+}
+.gaf-container .align-c {
+    /* text-align: center!important; */
+}
+.gaf-container *, .gaf-container ::after, .gaf-container ::before {
+    box-sizing: content-box;
+}
+.gaf-container .padding-l10 {
+    padding-left: 10px!important;
+}
+.gaf-container .padding-r10 {
+    padding-right: 10px!important;
+}
+.gaf-container .align-c {
+    /* text-align: center!important; */
+}
+.gaf-container .border-l {
+    border-left: 1px solid #CCC;
+}
+.gaf-container .border-r {
+    border-right: 1px solid #CCC;
+}
+.gaf-container .text-blue {
+    color: #008bcb!important;
+}
+.gaf-container .bold {
+    font-weight: 700!important;
+}
+.gaf-container .larger {
+    font-size: 22px!important;
+}
+
+.gaf-container .margin-0 {
+    margin: 0!important;
+}
+
+.gaf-container .span12 {
+    width: 920px;
+}
+
+
+.gaf-container .clear {
+    clear: both;
+}
+
+.well2{
+  display: -webkit-inline-box;
+
+}

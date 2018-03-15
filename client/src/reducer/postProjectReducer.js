@@ -19,24 +19,49 @@ export function postProjectReducer(state, action){
 
     case actionType.POST_PROJECT_SUCCESS :newState.projectid = action.payload.projectid;
                                           return newState;
+
     case actionType.POST_PROJECT_FAILURE :newState.projectid = undefined;
                                             return newState;
+
     case actionType.MAP_FILES_TO_PROJECT_SUCCESS :newState.mappedfilesToProjectFlag = action.payload.success;
                                                   return newState;
+
     case actionType.MAP_FILES_TO_PROJECT_FAILURE :newState.mappedfilesToProjectFlag = action.payload.success;
                                                   return newState;
+
     case actionType.MAP_SKILLS_TO_PROJECT_SUCCESS : newState.mappedSkillsToProjectFlag = action.payload.success;
                                                   return newState;
+
     case actionType.MAP_SKILLS_TO_PROJECT_FAILURE :  newState.mappedSkillsToProjectFlag = action.payload.success;
                                                   return newState;
+
     case actionType.MAP_PROJECT_TO_USER_SUCCESS : newState.mappedUserToProjectFlag = action.payload.success;
                                                   return newState;
+
     case actionType.MAP_PROJECT_TO_USER_FAILURE :  newState.mappedUserToProjectFlag = action.payload.success;
                                                   return newState;
-    case actionType.GET_RECOMMENDED_PROJECTS_SUCCESS : newState.recommendedProjects = action.payload.recommendedProjects;
+
+    case actionType.GET_RECOMMENDED_PROJECTS_SUCCESS : newState.projectsWithSkills = action.payload.projectsWithSkills;
                                                       return newState;
-    case actionType.GET_RECOMMENDED_PROJECTS_FAILURE : newState.recommendedProjects = undefined;
+
+    case actionType.GET_RECOMMENDED_PROJECTS_FAILURE : newState.projectsWithSkills = undefined;
                                                       return newState;
+
+    case actionType.GET_PROJECT_POSTEDBY_ID_SUCCESS : newState.postedBy = action.payload.postedBy;
+                                                      return newState;
+
+  case actionType.GET_PROJECT_POSTEDBY_ID_FAILURE : newState.postedBy = undefined;
+                                                    return newState;
+
+  case actionType.GET_SKILLS_OF_PROJECT_SUCCESS : newState.skillsRequiredByProject = action.payload.skillsRequiredByProject;
+                                                  return newState;
+
+  case actionType.GET_SKILLS_OF_PROJECT_FAILURE : newState.skillsRequiredByProject = [];
+                                                    return newState;
+
+  case actionType.GET_PROJECT_DETAILS_SUCCESS : newState.project = action.payload;
+                                                return newState;
+
      default : return newState;
 
   }
