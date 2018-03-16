@@ -1,15 +1,45 @@
 import React, {Component} from 'react';
 import {Popover} from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import {showDashboard, hideDashboard} from '../actions';
+
+// const mapStateToProps = (state) => {
+//   return {
+//     showDashboard: state.signupReducer.showDashboard,
+//   }
+// }
+
+const mapDispatchToProps = (dispatch)=>{
+  let actions = {showDashboard,hideDashboard};
+  return { ...actions, dispatch };
+}
 
 class FixedNav extends Component{
 
   constructor(props){
     super(props);
+    this.state = {
+      showDashboard : false
+    }
     this.handleLogout = this.handleLogout.bind(this);
     this.goToDashBoard = this.goToDashBoard.bind(this);
+    this.goToProjectFeed = this.goToProjectFeed.bind(this);
   }
+
+  goToDashBoard(){
+    this.setState({showDashboard : true}, function(){
+      this.props.dispatch(this.props.showDashboard(this.state.showDashboard))
+    });
+  }
+
+   goToProjectFeed(){
+     this.setState({showDashboard : false}, function(){
+        this.props.dispatch(this.props.hideDashboard(this.state.showDashboard))
+       this.props.history.push('/home');
+     });
+   }
 
   handleLogout(){
   	localStorage.removeItem('userid');
@@ -18,9 +48,10 @@ class FixedNav extends Component{
   	this.props.history.push('/login');
   }
 
-render(){
-  return(
-    <div>
+  render(){
+
+    return(
+      <div>
 
     <nav className="navbar navbar-default navbar1">
       <div className="container-fluid">
@@ -83,18 +114,20 @@ render(){
     </div>
     </nav>
     <nav className="navbar navbar-inverse navbar2 ">
-      <div className="container-fluid">
+        <div className="container-fluid">
 
-        <ul className="nav navbar-nav">
-          <li className="active"><a  onClick= { ()=> this.props.history.push('/home') }>Projects</a></li>
-          <li><a    onClick= { this.goToDashBoard }>Dashboard</a></li>
-          <li><a href="#">Inbox</a></li>
-        </ul>
-          <button className="btn navbar-btn btn-pull-right">Post a Project</button>
-      </div>
+          <ul className="nav navbar-nav">
+            <li className="active"><a  onClick= { this.goToProjectFeed }>Projects</a></li>
+            <li><a    onClick= { this.goToDashBoard }>Dashboard</a></li>
+            <li><a href="#">Inbox</a></li>
+          </ul>
+            <button className="btn navbar-btn btn-pull-right">Post a Project</button>
+        </div>
 
 
-    </nav>
+      </nav>
+
+    
     </div>
 
   )
@@ -102,4 +135,4 @@ render(){
 
 }
 
-export default withRouter(FixedNav);
+export default withRouter(connect(mapDispatchToProps)(FixedNav));

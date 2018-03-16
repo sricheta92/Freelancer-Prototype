@@ -6,12 +6,14 @@ import ProjectFeedItem from './ProjectFeedItem';
 import FixedNav from './FixedNav';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getRecommendedProjects } from '../actions'
+import { getRecommendedProjects } from '../actions';
+import DashboardDecider from './DashboardDecider';
 
 const mapStateToProps = (state) => {
   return {
     username: state.loginReducer.username,
     userID :localStorage.getItem("userid"),
+    showDashboard : state.signupReducer.showDashboard,
     projectsWithSkills :state.postProjectReducer.projectsWithSkills
   }
 }
@@ -29,7 +31,7 @@ class NavbarAfterLogin extends Component{
   }
 
   static defaultProps = {
-  //  recommendedProjects: []
+    showDashboard: false
   }
 
   componentDidMount(){
@@ -41,7 +43,7 @@ class NavbarAfterLogin extends Component{
     return(
     <div>
       <FixedNav />
-
+       {this.props.showDashboard ? <DashboardDecider role={localStorage.getItem("role")} /> :
         <div class=" news-feed panel panel-primary col-md-8 col-offset-md-4 ">
           <div class="panel-heading ">Job Feed</div>
           {this.props.projectsWithSkills != undefined ?
@@ -52,7 +54,7 @@ class NavbarAfterLogin extends Component{
           : <div class="panel-body ">Add skills to get job feed</div>}
 
         </div>
-
+      }
       </div>
     );
 

@@ -10,7 +10,8 @@
         var reqEmail = req.body.email;
         var reqUsername = req.body.username;
         var reqPassword = req.body.password;
-        checkIfUsernameEmailExists(reqUsername,reqEmail, reqPassword, req, res);
+        var reqRole = req.body.role;
+        checkIfUsernameEmailExists(reqUsername,reqEmail, reqPassword, reqRole, req, res);
     });
 
 
@@ -80,14 +81,15 @@
         });
     });
 
-    function addUser(req,res, reqEmail, reqUsername, reqPassword){
+    function addUser(req,res, reqEmail, reqUsername, reqPassword,reqRole){
       bcrypt.hash(req.body.password, salt, function(err, password) {
            pool.getConnection(function(err, connection){
              console.log(password);
-              connection.query("insert into user (`email`,`username`,`password`)  VALUES ("+
+              connection.query("insert into user (`email`,`username`,`password`,`primary_role`)  VALUES ("+
                   "'"+reqEmail+
                   "', '"+reqUsername+
                   "', '"+password+
+                  "', '"+reqRole+
                   "');",  function(err,results, fields){
                   connection.release();//release the connection
                           if(err) {
@@ -103,7 +105,7 @@
 
     }
 
-    function checkIfUsernameEmailExists(reqUsername,reqEmail, reqPassword, req,res){
+    function checkIfUsernameEmailExists(reqUsername,reqEmail, reqPassword, reqRole, req,res){
 
           pool.getConnection(function(err, connection){
               connection.query("select * from user where email='"+ reqEmail+"'",  function(err, rows){
@@ -116,7 +118,7 @@
                       if(rows!=undefined && rows.length>0) {
                           res.status(409).send({ inuse:'user',success: false, message: 'This username already exists, please choose another' });
                       }else{
-                        addUser(req,res, reqEmail, reqUsername, reqPassword);
+                        addUser(req,res, reqEmail, reqUsername, reqPassword,reqRole);
                       }
 
                   });

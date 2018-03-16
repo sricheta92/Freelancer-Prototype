@@ -28,7 +28,7 @@
                                         var token = jwt.sign(data, req.app.get('secret'), {
                             							 expiresIn : 60*60
                             						});
-                                        res.status(200).send({ success: true, message: '',  token: token,username :rows[0].username, userid : rows[0].userid });
+                                        res.status(200).send({ success: true, message: '',  token: token,username :rows[0].username, userid : rows[0].userid, primary_role: rows[0].primary_role });
                                   }else{
                                         res.status(401).send({ success: false, message: 'The email and password you entered did not match our records. Please double-check and try again.' });
                                   }

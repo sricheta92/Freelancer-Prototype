@@ -25,7 +25,8 @@ export function signup(state) {
     let temp = {
       "username": state.username,
       "email" :state.email,
-      "password" :state.password
+      "password" :state.password,
+      "role" :state.role
 
     };
     return axios.post("http://localhost:5000/signup", temp).then((response) => {
@@ -70,6 +71,7 @@ export function login(state){
           localStorage.setItem('jwtToken', response.data.token);
   				localStorage.setItem('userid', response.data.userid);
           localStorage.setItem('username', response.data.username);
+          localStorage.setItem('role', response.data.primary_role);
   			  dispatch({type:actionType.LOGIN_SUCCESS, payload: response.data})
 			  }
       }).catch((err) => {
@@ -297,6 +299,34 @@ export function saveBidOfUser(state){
        }
      }).catch((err) => {
         dispatch({type:actionType.PROJECT_BID_FAILURE, payload: err.response.data})
+     })
+  }
+}
+
+export function showDashboard(data){
+  return {
+    type: actionType.SHOW_DASHBOARD,
+    data
+  }
+}
+
+
+export function hideDashboard(data){
+  return {
+    type: actionType.HIDE_DASHBOARD,
+    data
+  }
+}
+
+export function getAllBiddedProject(data){
+  return function(dispatch){
+
+    return axios.get("http://localhost:5000/user/biddedprojects/"+data).then((response) => {
+       if( response.data){
+         dispatch({type:actionType.projectsBiddedByMe, payload: response.data})
+       }
+     }).catch((err) => {
+        dispatch({type:actionType.GET_BIDDED_PROJECTS_FAILURE, payload: err.response.data})
      })
   }
 }

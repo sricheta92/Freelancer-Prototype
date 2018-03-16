@@ -42,6 +42,8 @@ export function signupReducer(state  =defaultState, action){
 			case actionType.COMPLETE_PROFILE_FAILURE :newState.userID = undefined;
 																								return newState;
 
+			case actionType.HIDE_DASHBOARD : newState.showDashboard = action.data;return newState;
+			case actionType.SHOW_DASHBOARD : newState.showDashboard = action.data;return newState;
        default: return newState;
     }
 
