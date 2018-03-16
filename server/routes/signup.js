@@ -1,7 +1,9 @@
     var express = require('express');
     var pool = require('./../pool');
     var router = express.Router();
+    var bcrypt = require('bcrypt');
 
+    var salt = bcrypt.genSaltSync(10);
 
     router.post('/', (req, res) => {
 
@@ -19,6 +21,7 @@
         var city =req.body.city;
         var phone =req.body.phone;
         var userID=req.body.userID;
+        var profilePic = "./uploads/" + req.body.profilePic;
 
         pool.getConnection(function(err, connection){
          connection.query("update user set `firstname` = "+
@@ -29,11 +32,13 @@
             "'"+city+
               "',"+ "`phone` ="+
               "'"+phone+
+            "',"+ "`profile-pic-path` ="+
+             "'"+profilePic+
            "' where userid ="+userID+";",  function(err,results, fields){
            connection.release();//release the connection
            if(err) {
                res.status(500);
-             throw err;
+
 
          }else{
              res.status(200).send({success: true,message :"Added" ,id:userID});
@@ -76,24 +81,24 @@
     });
 
     function addUser(req,res, reqEmail, reqUsername, reqPassword){
-
+      bcrypt.hash(req.body.password, salt, function(err, password) {
            pool.getConnection(function(err, connection){
-            connection.query("insert into user (`email`,`username`,`password`)  VALUES ("+
-              "'"+reqEmail+
-              "', '"+reqUsername+
-              "', '"+reqPassword+
-              "');",  function(err,results, fields){
-              connection.release();//release the connection
-              if(err) {
-                  res.status(500);
-                throw err;
-                return;
-
-            }else{
-                res.status(200).send({success: true,message :"New user created " ,id:results.insertId, username: reqUsername});
-            }
-        });
-
+             console.log(password);
+              connection.query("insert into user (`email`,`username`,`password`)  VALUES ("+
+                  "'"+reqEmail+
+                  "', '"+reqUsername+
+                  "', '"+password+
+                  "');",  function(err,results, fields){
+                  connection.release();//release the connection
+                          if(err) {
+                            res.status(500);
+                            throw err;
+                            return;
+                          }else{
+                            res.status(200).send({success: true,message :"New user created " ,id:results.insertId, username: reqUsername});
+                          }
+                  });
+            });
         });
 
     }

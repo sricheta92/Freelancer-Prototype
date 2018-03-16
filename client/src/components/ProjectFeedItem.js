@@ -36,7 +36,7 @@ class ProjectFeedItem extends Component{
         <a onClick={this.navigateToProjectDetails}><h4 className = "" >
           {this.props.projectfeeditem.project.project_name}
         </h4></a>
-        <button className = "btn btn-success pull-right">Bid Now!</button>
+        <button className = "btn btn-success pull-right font-bold">Bid Now!</button>
         <span> {this.props.projectfeeditem.project.budget_range}</span>
         <div>  {this.props.projectfeeditem.project.description}</div>
         {this.props.projectskills ? this.props.projectskills.map( skill => <div>{skill.name}</div>) : null}

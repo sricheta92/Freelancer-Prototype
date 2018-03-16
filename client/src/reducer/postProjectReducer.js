@@ -62,6 +62,12 @@ export function postProjectReducer(state, action){
   case actionType.GET_PROJECT_DETAILS_SUCCESS : newState.project = action.data;
                                                 return newState;
 
+  case actionType.PROJECT_BID_SUCCESS : newState.projectBidStatus = action.payload.success;
+                                        return newState;
+
+  case actionType.PROJECT_BID_FAILURE : newState.projectBidStatus = action.payload.success;
+                                        return newState;
+
      default : return newState;
 
   }

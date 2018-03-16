@@ -47,7 +47,7 @@ class NavbarAfterLogin extends Component{
           {this.props.projectsWithSkills != undefined ?
           <div class="panel-body ">
             {this.props.projectsWithSkills.map(projectsWithSkill =>
-              <ProjectFeedItem key={projectsWithSkill.project.project_id} postedBy = {projectsWithSkill.postedBy} projectskills = {projectsWithSkill.skills} projectfeeditem = {projectsWithSkill} /> )}
+              <ProjectFeedItem key={projectsWithSkill.project.project_id} postedBy = {projectsWithSkill.postedBy} projectskills = {projectsWithSkill.skills} projectfeeditem = {projectsWithSkill} userdBidded = {projectsWithSkill.usersBidded}/> )}
           </div>
           : <div class="panel-body ">Add skills to get job feed</div>}
 

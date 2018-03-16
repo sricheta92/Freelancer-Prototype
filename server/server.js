@@ -52,7 +52,7 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.json('error');
 });
-app.set('superSecret', 'CMPE272_freelancer');
+app.set('secret', 'CMPE272_freelancer');
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 module.exports = app;

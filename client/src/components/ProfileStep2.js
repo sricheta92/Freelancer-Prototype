@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
-import {completeProfile,mapSkillToUser} from '../actions';
+import {completeProfile,mapSkillToUser,handleFileUpload} from '../actions';
 import { withRouter } from 'react-router-dom'
 
 const mapDispatchToProps = (dispatch) => {
 
-    let actions = {completeProfile,mapSkillToUser};
+    let actions = {completeProfile,mapSkillToUser,handleFileUpload};
     return { ...actions, dispatch };
 }
 
@@ -13,7 +13,9 @@ const mapStateToProps = (state) => {
 
   return {
       skills: state.skillReducer.skills,
-      userID :state.signupReducer.userID
+      userID :state.signupReducer.userID,
+      uploadname :state.postProjectReducer.uploadname,
+      originalname :state.postProjectReducer.originalname
 
     };
 }
@@ -23,7 +25,12 @@ class ProfileStep2 extends Component{
 
   constructor(props){
     super(props);
+    this.state = {
+      file : '',
+      imagePreviewUrl : ''
+    }
     this.handleComplete = this.handleComplete.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   handleComplete(event) {
@@ -34,21 +41,42 @@ class ProfileStep2 extends Component{
       city :this.refs.city.value,
       phone :this.refs.phone.value,
       skills : this.props.skills,
-      userID : this.props.userID
+      userID : this.props.userID,
+      profilePic: this.props.uploadname
+
     },function(){
         this.props.dispatch(completeProfile(this.state))
         .then(() => this.props.dispatch(mapSkillToUser(this.state)))
         .then(  this.props.history.push("/login"));
     });
   }
-/*
-  componentWillReceiveProps(){
-    if(this.props.userID){
-      this.props.history.push("/login");
+
+  handleFile(e){
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
     }
-  } */
+
+    reader.readAsDataURL(file)
+
+    this.props.dispatch(this.props.handleFileUpload(this.props, e.target.files[0]))
+  }
 
   render(){
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<img src={imagePreviewUrl} />);
+    } else {
+      $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+    }
+
     return(
       <div className = "profile-step2">
         <div className= "CompleteProfile col-md-4 col-lg-4 col-sm-4">
@@ -65,6 +93,9 @@ class ProfileStep2 extends Component{
 
           </div>
           <div className= "col-md-8 col-lg-8 col-sm-8">
+            <div className="imgPreview">
+              {$imagePreview}
+            </div>
             <form ole="form" method="POST" onSubmit = {this.handleComplete}>
               <div class="CompleteProfile-form">
                   <div class="form-group CompleteProfile-form-row">
@@ -83,6 +114,7 @@ class ProfileStep2 extends Component{
                       </span>
 
                   </div>
+                  <input type="file" onChange={this.handleFile} accept=".jpg,.jpeg,.PNG" required/>
                   <div className="form-group wizard-finish-btn pull-right">
                       <div >
                         <button id="complete-profile" type="submit" className="btn btn-info btn-large btn-submit large-input freelancer-font">

@@ -131,7 +131,8 @@ export function completeProfile(state){
         "lname" :state.lname,
         "city" :state.city,
         "phone" :state.phone,
-        "userID" :state.userID
+        "userID" :state.userID,
+        "profilePic" : state.profilePic
       };
     return axios.post("http://localhost:5000/signup/withDetails",temp).then((response) => {
        if( response.data){
@@ -281,3 +282,21 @@ export function getProjectDetails(data) {
       data
     }
   }
+
+export function saveBidOfUser(state){
+  return function(dispatch){
+    let temp = {
+			"user_id": state.user_id,
+      "project_id" :state.project_id,
+      "bid_days" :state.bid_days,
+      "bid_price" :state.bid_price
+		};
+    return axios.post("http://localhost:5000/project/bidproject",temp).then((response) => {
+       if( response.data){
+         dispatch({type:actionType.PROJECT_BID_SUCCESS, payload: response.data})
+       }
+     }).catch((err) => {
+        dispatch({type:actionType.PROJECT_BID_FAILURE, payload: err.response.data})
+     })
+  }
+}

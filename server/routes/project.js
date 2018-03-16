@@ -56,6 +56,7 @@
   router.get("/mapRecommendedProjects/:userId" ,function(req,res){
     var arr = [];
     var arr1 = [];
+    var userBidded= [];
     var doc;
       pool.getConnection(function(err, connection){
         connection.query("select * from project where project_id in ( select distinct(project_id) FROM project_skill ps join skill_user su where ps.skill_id = su.skillid and su.userid = "+ req.params.userId+")",  function(err, rows){
@@ -80,10 +81,16 @@
                 }
               });
 
+              connection.query("select * from freelancer.user u join freelancer.project_bid pb on u.userid = pb.user_id where pb.project_id = '" + row.project_id+ "';",  function(err, rows4){
+                 if(rows4!= undefined && rows4.length >0){
+                   userBidded = rows4;
+                 }
+               });
+
              connection.query("select * from user u join project_user pu on u.userid = pu.user_id where pu.Role = 'Employer' and project_id = "+row.project_id +";",function(err,rows2){
                if(rows2 != undefined && rows2.length >0){
                  console.log(rows2.length);
-                   arr.push({project: row, skills : arr1, postedBy : rows2[0], file : doc });
+                   arr.push({project: row, skills : arr1, postedBy : rows2[0], file : doc ,usersBidded : userBidded});
                    if(index === rows.length-1){
                       if(err) throw err;
                       res.status(200).send({projectsWithSkills: arr});
@@ -204,6 +211,33 @@
     });
   });
 
+router.post("/bidproject",function(req,res){
+
+  var project_id = req.body.project_id;
+  var user_id = req.body.user_id;
+  var bid_price = req.body.bid_price;
+  var bid_days = req.body.bid_days;
+  pool.getConnection(function(err, connection){
+   connection.query("insert into project_bid (`project_id`,`user_id`,`bid_price`,`bid_days`,`create_date`)  VALUES ("+
+     "'"+project_id+
+     "', '"+user_id+
+     "', '"+bid_price+
+     "', '"+bid_days+
+     "', CURDATE());",  function(err,results, fields){
+     connection.release();//release the connection
+         if(err) {
+             res.status(500).send({success: false});
+           throw err;
+           return;
+
+       }else{
+           res.status(200).send({success: true,message :" user bidded for project successfully " });
+       }
+    });
+
+  });
+
+});
 
 
   module.exports = router;

@@ -812,3 +812,189 @@ ol.progtrckr li.progtrckr-done:hover:before {
 #num-bids{
   display: block;
 }
+.project-subheader{
+  font-weight: 700;
+      display: inline-block;
+      margin-left: 5%;
+}
+.font-bold{
+font-weight: 700;
+}
+.bidform{
+  margin-left: 2%;
+
+}
+
+.bidform .BidProposal-form .BidProposal-form-step .input-group {
+    width: auto;
+}
+
+.bidform .fl-form .input-group {
+    display: table!important;
+    position: relative;
+    width: 100%;
+    border-collapse: separate;
+}
+
+.bidform .fl-form .input-group .add-on:first-child {
+    border-right: 0;
+}
+
+.bidform .fl-form .input-group .add-on:first-child {
+    border-right: 0;
+}
+.bidform.fl-form .input-group .add-on {
+    display: table-cell;
+    padding: 9px 12px;
+    border: 1px solid #BEC0C2;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+    color: #767676;
+    background-color: #eee;
+}
+
+.bidform .BidProposal * {
+    box-sizing: border-box;
+}
+
+.bidform .fl-form label {
+    display: block;
+    margin-bottom: 10px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.bidform .BidProposal-form .BidProposal-form-step .input-group {
+    width: auto;
+}
+.bidform.fl-form .input-group {
+    display: table!important;
+    position: relative;
+    width: 100%;
+    border-collapse: separate;
+}
+
+.bid-list-containerWrapper {
+    box-sizing: border-box;
+    margin-left: 30px;
+    max-width: 920px;
+    padding: 0;
+}
+
+.Card {
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.08), 0 2px 4px 0 rgba(0,0,0,.12);
+    border-radius: 3px;
+    background: #fff;
+}
+
+.bid-list-awarded,.bid-list-freelancer,  .bid-list-header {
+    color: #fff;
+    font-size: 13px;
+
+    line-height: 1.2;
+    text-transform: uppercase;
+    background: #4D525B;
+}
+ #bid-list-header {
+    overflow: hidden;
+    padding: 5px 0;
+}
+
+#bid-list-header.wider .bid-user-info-header {
+    width: 71%;
+}
+
+.bid-user-info-header {
+    width: 59%;
+    float: left;
+}
+.bid-user-info-header {
+    width: 36%;
+    float: left;
+}
+.padding-b5 {
+    padding-bottom: 5px!important;
+}
+ .padding-t5 {
+    padding-top: 5px!important;
+}
+ .margin-l0 {
+    margin-left: 0!important;
+}
+
+.padding-l10 {
+    padding-left: 10px!important;
+}
+ .text-white {
+    color: #FFF!important;
+}
+.bold {
+    font-weight: 700!important;
+}
+
+ #bid-list-header.wider .bid-sum-header {
+    width: 14%;
+    float: right;
+}
+
+ #bid-list.wider {
+    position: relative;
+}
+#bid-list, .gaf-container #shortlist-bid-list {
+    background-color: #fff;
+    border-radius: 0 0 3px 3px;
+    box-sizing: border-box;
+}
+ .bid-list-freelancerWrapper {
+    padding: 0;
+}
+.Grid-col--12 {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+}
+@media (min-width: 768px)
+.Grid-col {
+    padding: 0 12px;
+}
+.Grid-col {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 8px;
+}
+
+ div.bid {
+    border-bottom: 1px solid #DDD;
+}
+.project-desc-text{
+  margin-left :4%;
+}
+.project-details-div{
+  margin-right: 50%
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #eeeeee5c;
+    opacity: 1;
+}
+
+.imgPreview{
+ text-align: center;
+ margin: 5px 15px;
+ height: 200px;
+ width: 500px;
+ border-left: 1px solid gray;
+ border-right: 1px solid gray;
+ border-top: 5px solid gray;
+ border-bottom: 5px solid gray;
+}
+ .imgPreview img{
+   width: 100%;
+   height: 100%;
+ }

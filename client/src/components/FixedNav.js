@@ -8,6 +8,7 @@ class FixedNav extends Component{
   constructor(props){
     super(props);
     this.handleLogout = this.handleLogout.bind(this);
+    this.goToDashBoard = this.goToDashBoard.bind(this);
   }
 
   handleLogout(){
@@ -85,8 +86,8 @@ render(){
       <div className="container-fluid">
 
         <ul className="nav navbar-nav">
-          <li className="active"><a href="#">My Projects</a></li>
-          <li><a href="#">Dashboard</a></li>
+          <li className="active"><a  onClick= { ()=> this.props.history.push('/home') }>Projects</a></li>
+          <li><a    onClick= { this.goToDashBoard }>Dashboard</a></li>
           <li><a href="#">Inbox</a></li>
         </ul>
           <button className="btn navbar-btn btn-pull-right">Post a Project</button>
