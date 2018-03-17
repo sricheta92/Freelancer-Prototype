@@ -2,6 +2,28 @@ var express = require('express');
 var pool = require('./../pool');
 var router = express.Router();
 
+  router.get('/detail/:userid', (req,res) =>{
+      var arr = []
+      console.log("hello" +req);
+      pool.getConnection(function(err, connection){
+        connection.query("select * from user  where  userid= "+  req.params.userid + ";", function(err, rows){
+            if(rows != undefined && rows.length >0){
+              console.log(rows);
+              connection.query("select * from skill s join skill_user su on s.skill_id = su.skillid where su.userid ="+  req.params.userid + ";", function(err, rows1){
+                if(rows1 != undefined && rows1.length>0){
+                  res.status(200).send({success: true, user : rows, skill : rows1});
+                }else{
+                    res.status(200).send({success: true, user : rows, skill : []});
+                }
+              });
+            }else{
+              throw err;
+              res.status(500).send({success: false, message : "user not found"});
+            }
+          });
+      });
+  });
+
   router.get('/biddedprojects/:userid', (req, res) => {
     var arr = [];
     var arr1 = [];

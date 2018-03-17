@@ -106,6 +106,14 @@ class ProfileStep2 extends Component{
                       </span>
 
                   </div>
+                  <div class="form-group CompleteProfile-form-row">
+                      <span class="CompleteProfile-form-header">Bio and Professional Headline </span>
+                      <span class="CompleteProfile-form-input">
+                          <textarea class="CompleteProfile-form-input-left large-input " ref= "bio" type="text" placeholder="First Name" required/>
+                          <input class="CompleteProfile-form-input-right large-input " ref= "headline" type="text" placeholder="Last Name" required/>
+                      </span>
+
+                  </div>
                   <div class="form-group CompleteProfile-form-row gap">
                       <span class="CompleteProfile-form-header">Contact Information</span>
                       <span class="CompleteProfile-form-input">

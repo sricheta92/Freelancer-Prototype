@@ -20,6 +20,14 @@ export function userReducer(state={}, action){
       case actionType.GET_POSTED_PROJECTS_FAILURE : newState.projectsPostedByMe = undefined;
                                                     return newState;
 
+      case actionType.GET_USER_DETAIL_SUCCESS : newState.user = action.payload.user;
+                                                newState.skill = action.payload.skill;
+                                                return newState;
+
+      case actionType.GET_USER_DETAIL_FAILURE : newState.user = undefined;
+                                                newState.skill = action.payload.skill;
+                                                return newState;
+
       default : return newState;
   }
 }

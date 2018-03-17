@@ -348,3 +348,15 @@ export function getAllPostedProjectsbyMe(data){
      })
   }
 }
+
+export function getUserDetails(data){
+  return function(dispatch){
+    return axios.get("http://localhost:5000/user/detail/"+data).then((response) => {
+       if( response.data){
+         dispatch({type:actionType.GET_USER_DETAIL_SUCCESS, payload: response.data})
+       }
+     }).catch((err) => {
+        dispatch({type:actionType.GET_USER_DETAIL_FAILURE, payload: err.response})
+     })
+  }
+}

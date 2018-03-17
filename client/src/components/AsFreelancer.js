@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import DashBoardSwitch from './DashBoardSwitch';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {getAllBiddedProject,getProjectDetails} from '../actions'
+import {getAllBiddedProject,getProjectDetails,getUserDetails} from '../actions'
 
 const mapDispatchToProps = (dispatch) => {
 
-    let actions = {getAllBiddedProject,getProjectDetails};
+    let actions = {getAllBiddedProject,getProjectDetails,getUserDetails};
     return { ...actions, dispatch };
 
   }
@@ -21,17 +21,18 @@ class AsFreelancer extends Component{
 
   constructor(props){
     super(props);
-    // this.state = {
-    //   isFreelancer : true,
-    //   freelancerText : 'Freelancer',
-    //   employerText : 'Employer'
-    // }
     this.navigateToProjectDetails = this.navigateToProjectDetails.bind(this);
+    this.navigateToUserDetails = this.navigateToUserDetails.bind(this);
   }
 
   navigateToProjectDetails(projectbidded)  {
     this.props.dispatch(this.props.getProjectDetails(projectbidded))
     this.props.history.push("/projectDetails");
+  }
+
+  navigateToUserDetails(postedby){
+    this.props.dispatch(this.props.getUserDetails(postedby.userid))
+    .then(()=>this.props.history.push("/user/"+ postedby.username ));
   }
 
 
@@ -41,19 +42,8 @@ class AsFreelancer extends Component{
 
   static defaultProps = {
     projectsBiddedByMe :[
-        // "project" :{
-        //   "project_name" :'',
-        // },
-        // "postedBy" :{
-        //   "username" :'',
-        //
-        // },
-        // "mybid" :{
-        //   "average_bid" :'',
-        //   "bid_price" :''
-        // }
-    ]
 
+    ]
   }
 
     render(){
@@ -77,7 +67,7 @@ class AsFreelancer extends Component{
 
                   <tr>
                     <td> <a className = "cursor" onClick={() =>{this.navigateToProjectDetails(projectbidded)}} >{projectbidded.project.project_name} </a></td>
-                    <td>{projectbidded.postedBy.username}</td>
+                    <td><a  className = "cursor" onClick={() =>{this.navigateToUserDetails(projectbidded.postedBy)}}>{projectbidded.postedBy.username}</a></td>
                     <td>$ {projectbidded.mybid.average_bid}</td>
                     <td>$ {projectbidded.mybid.bid_price}</td>
                     <td>Open</td>
