@@ -1,6 +1,22 @@
 import React,{Component} from 'react';
 import Switch from "react-switch";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import {getDashboardSwitchStatus} from '../actions'
+
+const mapDispatchToProps = (dispatch) => {
+
+    let actions = {getDashboardSwitchStatus};
+    return { ...actions, dispatch };
+
+  }
+
+  const mapStateToProps = (state) => {
+    return {
+      dashboardSwitchStatus  : state.userReducer.dashboardViewisWorker
+    };
+  }
+
 
 class DashBoardSwitch extends Component{
 
@@ -17,17 +33,19 @@ class DashBoardSwitch extends Component{
   }
 
   handleChange(checked) {
-    this.setState({ checked });
+    this.setState({ checked },function(){
+      this.props.dispatch(getDashboardSwitchStatus(this.state.checked));
+    });
   }
 
   render() {
     var checked, unchecked;
     if(localStorage.getItem("role") ==='Worker'){
-      checked = 'Worker';
-      unchecked = 'Employer';
+      checked = true;
+      unchecked = false;
     }else{
-      checked = 'Employer';
-      unchecked = 'Worker';
+      checked = false;
+      unchecked = true;
     }
    return (
            <label htmlFor="normal-switch" className = "dashboard-switch">
@@ -44,4 +62,4 @@ class DashBoardSwitch extends Component{
        }
 }
 
-export default DashBoardSwitch;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(DashBoardSwitch));

@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import {Typeahead} from 'react-bootstrap-typeahead';
-import {getAllSkills, handleFileUpload,postProject,mapfilesToProject,mapSkillToProject} from '../actions'
+import {getAllSkills, handleFileUpload,postProject,mapfilesToProject,mapSkillToProject,mapProjectToUser} from '../actions'
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = (dispatch)=>{
   console.log("mapDispatchToProps");
-  let actions = {getAllSkills, handleFileUpload, postProject,mapfilesToProject,mapSkillToProject};
+  let actions = {getAllSkills, handleFileUpload, postProject,mapfilesToProject,mapSkillToProject,mapProjectToUser};
   return { ...actions, dispatch };
 }
 const mapStateToProps = (state) =>{
@@ -15,7 +15,9 @@ const mapStateToProps = (state) =>{
     uploadname :state.postProjectReducer.uploadname,
     originalname :state.postProjectReducer.originalname,
     username :state.signupReducer.username,
-    projectid :state.postProjectReducer.projectid
+    projectid :state.postProjectReducer.projectid,
+    userID : state.loginReducer.userID
+
   }
 }
 
@@ -33,7 +35,8 @@ constructor(props){
       projectname :'',
       projectdesc : '',
       budget : 'Micro Project ($10 - 30 USD)',
-      selectedSkills :[]
+      selectedSkills :[],
+      role : 'Employer'
     }
     this.handlePostProject = this.handlePostProject.bind(this);
     this.handleProjectNameChange = this.handleProjectNameChange.bind(this);
@@ -52,7 +55,7 @@ constructor(props){
   componentWillReceiveProps() {
      window.previousLocation = this.props.location
    }
-   
+
   handleFileUpload(e) {
     if(this.props.uploadname=== undefined){
   	  this.props.dispatch(this.props.handleFileUpload(this.props, e.target.files[0]))
@@ -76,6 +79,7 @@ constructor(props){
       }
     })
     .then(() =>  this.props.dispatch(mapSkillToProject(this.props, this.state)))
+    .then(() => this.props.dispatch(mapProjectToUser(this.state, this.props)))
     .then(() =>  {
       if(localStorage.getItem('jwtToken')){
         this.props.history.push("/home")

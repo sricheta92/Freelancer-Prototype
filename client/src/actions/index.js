@@ -320,13 +320,31 @@ export function hideDashboard(data){
 
 export function getAllBiddedProject(data){
   return function(dispatch){
-
     return axios.get("http://localhost:5000/user/biddedprojects/"+data).then((response) => {
        if( response.data){
-         dispatch({type:actionType.projectsBiddedByMe, payload: response.data})
+         dispatch({type:actionType.GET_BIDDED_PROJECTS_SUCCESS, payload: response.data})
        }
      }).catch((err) => {
         dispatch({type:actionType.GET_BIDDED_PROJECTS_FAILURE, payload: err.response.data})
+     })
+  }
+}
+
+export function getDashboardSwitchStatus(data){
+  return {
+    type: actionType.DASHBOARD_VIEW_TYPE,
+    data
+  }
+}
+
+export function getAllPostedProjectsbyMe(data){
+  return function(dispatch){
+    return axios.get("http://localhost:5000/user/postedprojects/"+data).then((response) => {
+       if( response.data){
+         dispatch({type:actionType.GET_POSTED_PROJECTS_SUCCESS, payload: response.data})
+       }
+     }).catch((err) => {
+        dispatch({type:actionType.GET_POSTED_PROJECTS_FAILURE, payload: err.response.data})
      })
   }
 }

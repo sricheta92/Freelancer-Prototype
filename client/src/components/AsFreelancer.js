@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import DashBoardSwitch from './DashBoardSwitch';
 import { connect } from 'react-redux';
-import {getAllBiddedProject} from '../actions'
+import { withRouter } from 'react-router-dom';
+import {getAllBiddedProject,getProjectDetails} from '../actions'
 
 const mapDispatchToProps = (dispatch) => {
 
-    let actions = {getAllBiddedProject};
+    let actions = {getAllBiddedProject,getProjectDetails};
     return { ...actions, dispatch };
 
   }
@@ -25,17 +26,42 @@ class AsFreelancer extends Component{
     //   freelancerText : 'Freelancer',
     //   employerText : 'Employer'
     // }
+    this.navigateToProjectDetails = this.navigateToProjectDetails.bind(this);
   }
 
-  componentDidMount(){
+  navigateToProjectDetails(projectbidded)  {
+    this.props.dispatch(this.props.getProjectDetails(projectbidded))
+    this.props.history.push("/projectDetails");
+  }
+
+
+  componentWillMount(){
     this.props.dispatch(this.props.getAllBiddedProject(localStorage.getItem("userid")))
   }
 
+  static defaultProps = {
+    projectsBiddedByMe :[
+        // "project" :{
+        //   "project_name" :'',
+        // },
+        // "postedBy" :{
+        //   "username" :'',
+        //
+        // },
+        // "mybid" :{
+        //   "average_bid" :'',
+        //   "bid_price" :''
+        // }
+    ]
+
+  }
 
     render(){
       return(
         <div>
             <DashBoardSwitch />
+            <h3 className ="dashboard-heading">Project Bidded by me</h3>
+            {this.props.projectsBiddedByMe.length>0 ?
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -47,26 +73,22 @@ class AsFreelancer extends Component{
                 </tr>
               </thead>
               <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
+                {this.props.projectsBiddedByMe.map(projectbidded =>
+
+                  <tr>
+                    <td> <a className = "cursor" onClick={() =>{this.navigateToProjectDetails(projectbidded)}} >{projectbidded.project.project_name} </a></td>
+                    <td>{projectbidded.postedBy.username}</td>
+                    <td>$ {projectbidded.mybid.average_bid}</td>
+                    <td>$ {projectbidded.mybid.bid_price}</td>
+                    <td>Open</td>
+                  </tr>
+                )}
+
+              </tbody>
+  </table> :null }
         </div>
       );
     }
 }
 
-export default  connect(mapStateToProps, mapDispatchToProps)(AsFreelancer);
+export default  withRouter(connect (mapStateToProps, mapDispatchToProps)(AsFreelancer));

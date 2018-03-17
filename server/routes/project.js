@@ -99,7 +99,9 @@
              });
          });
 
-          //    res.status(200).send({status: true, recommendedProjects : rows });
+           if(rows == undefined || rows.length ==0){
+              res.status(500).send({status: false, projectsWithSkills : [] });
+            }
           }
         });
       });

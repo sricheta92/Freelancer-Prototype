@@ -1003,3 +1003,10 @@ font-weight: 700;
    padding: 4%;
 margin-right: 4%;
  }
+ .cursor{
+   cursor: pointer;
+ }
+ .dashboard-heading{
+   text-align: center;
+margin-top: 7%;
+ }
