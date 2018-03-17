@@ -34,7 +34,7 @@ class DashBoardSwitch extends Component{
 
   handleChange(checked) {
     this.setState({ checked },function(){
-      this.props.dispatch(getDashboardSwitchStatus(this.state.checked));
+      this.props.dispatch(getDashboardSwitchStatus(this.state.checked))
     });
   }
 

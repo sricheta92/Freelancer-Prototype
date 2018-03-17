@@ -16,7 +16,8 @@ const mapStateToProps = (state) =>{
     originalname :state.postProjectReducer.originalname,
     username :state.signupReducer.username,
     projectid :state.postProjectReducer.projectid,
-    userID : localStorage.getItem("userid")
+    userID : state.signupReducer.userID,
+    projectfailMsg : state.postProjectReducer.projectfailMsg
 
   }
 }
@@ -51,10 +52,10 @@ constructor(props){
     console.log("componentWillMount");
     this.props.dispatch(getAllSkills());
   }
-
-  componentWillReceiveProps() {
-     window.previousLocation = this.props.location
-   }
+  //
+  // componentWillReceiveProps() {
+  //    window.previousLocation = this.props.location
+  //  }
 
   handleFileUpload(e) {
     if(this.props.uploadname=== undefined){
@@ -84,7 +85,7 @@ constructor(props){
       if(localStorage.getItem('jwtToken')){
         this.props.history.push("/home")
       }else{
-          this.props.history.push("/signup")
+          this.props.history.push("/login")
       }
     });
 
@@ -113,7 +114,7 @@ constructor(props){
             <a className="navbar-brand a-logo" href="#"><img className = "logo" src = "./images/icon.PNG"></img></a>
           </div>
           <br/>
-
+          {this.props.projectfailMsg ? <div className="alert alert-login"><strong>{this.props.projectfailMsg}</strong></div> : null}
          <div className = "row">
             <h1><strong>Tell us what you need done</strong></h1>
             <div className="project-header-desc">

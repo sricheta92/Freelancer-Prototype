@@ -39,7 +39,7 @@
        "', CURDATE());",  function(err,results, fields){
        connection.release();//release the connection
            if(err) {
-               res.status(500);
+               res.status(500).send({success:false,message :'Some internal error occured!'});
              throw err;
              return;
 

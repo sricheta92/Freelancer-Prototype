@@ -13,7 +13,7 @@ export function checkEmail(state) {
 				dispatch({type:actionType.EMAIL_VALID, payload: response.data})
 			}
 		}).catch((err) => {
-			 dispatch({type:actionType.EMAIL_INVALID, payload: err.response.data})
+			 dispatch({type:actionType.EMAIL_INVALID, payload: err.response})
 		})
 	}
 
@@ -134,8 +134,11 @@ export function completeProfile(state){
         "city" :state.city,
         "phone" :state.phone,
         "userID" :state.userID,
-        "profilePic" : state.profilePic
+        "profilePic" : state.profilePic,
+        "bio" :state.bio,
+        "headline" :state.headline
       };
+
     return axios.post("http://localhost:5000/signup/withDetails",temp).then((response) => {
        if( response.data){
          dispatch({type:actionType.COMPLETE_PROFILE_SUCCESS, payload: response.data})

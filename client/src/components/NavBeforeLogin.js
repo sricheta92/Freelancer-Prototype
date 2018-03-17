@@ -17,7 +17,7 @@ class NavBeforeLogin extends Component{
               <li><a onClick={() => { this.props.history.push("/login");}}> Log In </a></li>
               <li ><a onClick={() => { this.props.history.push("/signup");}}> Sign Up </a></li>
 
-              <button  onClick={() => { this.props.history.push("/postproject");}} className="btn before-login navbar-btn btn-pull-right ">Post a Project</button>
+            
          </ul>
        </div>
      </nav>

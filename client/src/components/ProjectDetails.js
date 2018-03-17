@@ -73,7 +73,7 @@ render(){
               <div class="clear"></div>
         </div>
         <div class="row col-md-12 well well2 white silver span padding-5 align-c margin-t10 margin-l10 margin-b10 PageFreelancerPvp-infoBar-details">
-          <div  class="align-c padding-r10 padding-l5 project-view-status">
+          <div  class="align-c padding-r10 padding-l5 project-view-status col-md-10">
               <div>
                   <span className = "col-md-3">
                     <span>Bids</span>
@@ -86,8 +86,8 @@ render(){
                       </div >
                   </span>
                   <span  class="col-md-3 align-c padding-l10 padding-r5 project-view-status">
-                      <span>Project Budget Range</span>
-                      <span class="text-blue larger bold project-budget">{this.props.project.project.budget_range}</span>
+                      <div>Project Budget Range</div>
+                      <div class="text-blue bold project-budget">{this.props.project.project.budget_range}</div>
                   </span>
               </div>
               <div>

@@ -51,7 +51,9 @@ class NavbarAfterLogin extends Component{
             {this.props.projectsWithSkills.map(projectsWithSkill =>
               <ProjectFeedItem key={projectsWithSkill.project.project_id} postedBy = {projectsWithSkill.postedBy} projectskills = {projectsWithSkill.skills} projectfeeditem = {projectsWithSkill} userdBidded = {projectsWithSkill.usersBidded}/> )}
           </div>
-          : <div class="panel-body ">Add skills to get job feed</div>}
+          : <div class="panel-body ">Complete your profile to to see all open projects!
+            <a className = "glyphicon glyphicon-arrow-right" onClick = {() =>   {this.props.history.push("/completeProfile")}}>   Complete your profile!</a>
+        </div>}
 
         </div>
       }

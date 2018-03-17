@@ -42,6 +42,8 @@ class ProfileStep2 extends Component{
       phone :this.refs.phone.value,
       skills : this.props.skills,
       userID : this.props.userID,
+      bio : this.refs.bio.value,
+      headline : this.refs.headline.value,
       profilePic: this.props.uploadname
 
     },function(){
@@ -109,8 +111,8 @@ class ProfileStep2 extends Component{
                   <div class="form-group CompleteProfile-form-row">
                       <span class="CompleteProfile-form-header">Bio and Professional Headline </span>
                       <span class="CompleteProfile-form-input">
-                          <textarea class="CompleteProfile-form-input-left large-input " ref= "bio" type="text" placeholder="First Name" required/>
-                          <input class="CompleteProfile-form-input-right large-input " ref= "headline" type="text" placeholder="Last Name" required/>
+                          <textarea class="CompleteProfile-form-input-left large-input " ref= "bio" type="text" placeholder="Bio" required/>
+                          <input class="CompleteProfile-form-input-right large-input " ref= "headline" type="text" placeholder="designation" required/>
                       </span>
 
                   </div>

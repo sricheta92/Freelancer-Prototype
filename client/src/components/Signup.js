@@ -51,13 +51,13 @@ class Signup extends Component {
 
 componentWillReceiveProps(nextProps){
   if(nextProps.signupStatus)
-    if(this.state.role === "Employer" && window.previousLocation.pathname !== '/postproject'){
+    if(this.state.role === "Employer" ){
       this.props.history.push("/postproject");
     }
-    if(this.state.role === "Employer" && window.previousLocation!= undefined && window.previousLocation.pathname === '/postproject'){
-      this.props.dispatch(this.props.mapProjectToUser(this.state, this.props))
-      .then(()=>this.props.history.push("/login"));
-    }
+    // if(this.state.role === "Employer" ){
+    //   this.props.dispatch(this.props.mapProjectToUser(this.state, this.props))
+    //   .then(()=>this.props.history.push("/login"));
+    // }
     if(this.state.role === "Worker"){
       this.props.history.push("/completeProfile");
     }
@@ -67,15 +67,13 @@ componentWillReceiveProps(nextProps){
   handleSubmit(e){
     e.preventDefault();
     var role1;
-    if(window.previousLocation != undefined && window.previousLocation.pathname === '/postproject'){
-      role1 = 'Employer';
-    }else{
+
       if(this.refs.looking_for_hire.checked){
         role1 = this.refs.looking_for_hire.value;
       }else{
         role1 = this.refs.looking_for_work.value;
       }
-   }
+
     this.setState({
       role : role1
    },function(){
@@ -169,11 +167,11 @@ componentWillReceiveProps(nextProps){
                                 <input  className="form-control large-input" maxLength="10" id="password" name="password" type="password" placeholder="Password"  onBlur ={this.handlePasswordChange}  required/>
                                 <div className={this.state.validPassword ? 'success' : 'text-input-error-wrapper'}>{this.state.passwordError}</div>
                             </div>
-                            {window.previousLocation === undefined ?
+
                             <div className="btn-group form-group" role="group" aria-label="Basic example">
                               <label className="btn btn-secondary"><input type="radio" name="looking_for" ref = "looking_for_hire" id="looking_to_hire" value="Employer"/>Hire</label>
                               <label className="btn btn-secondary"><input type="radio" name="looking_for" ref = "looking_for_work" id="looking_for_work" value="Worker"/>Work</label>
-                            </div> : null }
+                            </div>
 
                             <div className="form-group">
                                 <div >

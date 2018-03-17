@@ -21,6 +21,7 @@ export function postProjectReducer(state, action){
                                           return newState;
 
     case actionType.POST_PROJECT_FAILURE :newState.projectid = undefined;
+                                          newState.projectfailMsg = action.payload.message;
                                             return newState;
 
     case actionType.MAP_FILES_TO_PROJECT_SUCCESS :newState.mappedfilesToProjectFlag = action.payload.success;

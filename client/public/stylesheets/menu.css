@@ -404,18 +404,17 @@ font-weight: 700;
       margin-bottom: -2%;
 }
 .project-budget{
-  width: 50%;
+  width: 100%;
   height: 34px;
-  padding: 6px 12px;
+  padding: 6px 12px 0 0;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 4px;
-
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075); */
 }
 .project-curr{
   width:15%;
@@ -972,6 +971,8 @@ font-weight: 700;
 
  div.bid {
     border-bottom: 1px solid #DDD;
+    font-size: 22px;
+    font-weight: 500;
 }
 .project-desc-text{
   margin-left :4%;
@@ -1009,4 +1010,12 @@ margin-right: 4%;
  .dashboard-heading{
    text-align: center;
 margin-top: 7%;
+ }
+
+ .skill-gap{
+   margin-right: 0.5%
+ }
+ .bid-sum-header1{
+      width: 20%;
+    float: right;
  }

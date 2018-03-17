@@ -17,12 +17,15 @@
 
     router.post('/withDetails', (req, res) => {
 
+        debugger
         var fname= req.body.fname;
         var lname = req.body.lname;
         var city =req.body.city;
         var phone =req.body.phone;
         var userID=req.body.userID;
         var profilePic = "./uploads/" + req.body.profilePic;
+        var bio = req.body.bio;
+        var headline = req.body.headline;
 
         pool.getConnection(function(err, connection){
          connection.query("update user set `firstname` = "+
@@ -35,15 +38,18 @@
               "'"+phone+
             "',"+ "`profile-pic-path` ="+
              "'"+profilePic+
+             "',"+ "`bio` ="+
+              "'"+bio+
+              "',"+ "`prof_headline` ="+
+               "'"+headline+
            "' where userid ="+userID+";",  function(err,results, fields){
            connection.release();//release the connection
            if(err) {
+             throw err;
                res.status(500);
-
-
-         }else{
-             res.status(200).send({success: true,message :"Added" ,id:userID});
-         }
+            }else{
+               res.status(200).send({success: true,message :"Added" ,id:userID});
+           }
      });
 
      });

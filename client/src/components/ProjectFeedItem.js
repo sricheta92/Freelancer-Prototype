@@ -1,11 +1,11 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import { getProjectDetails} from '../actions';
+import { getProjectDetails, getUserDetails} from '../actions';
 
 const mapDispatchToProps = (dispatch) => {
 
-    let actions = {getProjectDetails};
+    let actions = {getProjectDetails, getUserDetails};
     return { ...actions, dispatch };
 
   }
@@ -46,7 +46,7 @@ class ProjectFeedItem extends Component{
         <span> {this.props.projectfeeditem.project.budget_range}</span>
         <div>  {this.props.projectfeeditem.project.description}</div>
         {this.props.projectskills ? this.props.projectskills.map( skill => <div>{skill.name}</div>) : null}
-        <span><a className ="cursor" onClick={this.navigateToUserDetails}>{this.props.postedBy}</a></span>
+        <span><a className ="cursor" onClick={()=> {this.navigateToUserDetails(this.props.postedBy)}}>{this.props.postedBy.username}</a></span>
       </div>
     );
   }
