@@ -79,9 +79,8 @@ class AsEmployer extends Component{
               {this.props.projectsPostedByMe.map(projectpost =>
                 <tr>
                   <td> <a className = "cursor" onClick={() =>{this.navigateToProjectDetails(projectpost)}} >{projectpost.project.project_name} </a></td>
-                  <td>{projectpost.postedBy.username}</td>
-                  <td>$ {projectpost.mybid.average_bid}</td>
-                  <td>$ {projectpost.usersBidded.map(user => function(){
+                  <td>{projectpost.mybid ? <div> {projectpost.mybid.average_bid }</div> : <div>$ Not bids yet </div>}</td>
+                  <td> {projectpost.usersBidded.map(user => function(){
                       {user.firstname}   {user.lastname}
                     })}</td>
                   <td>Open</td>

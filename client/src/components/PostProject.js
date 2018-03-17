@@ -16,7 +16,7 @@ const mapStateToProps = (state) =>{
     originalname :state.postProjectReducer.originalname,
     username :state.signupReducer.username,
     projectid :state.postProjectReducer.projectid,
-    userID : state.loginReducer.userID
+    userID : localStorage.getItem("userid")
 
   }
 }

@@ -344,7 +344,7 @@ export function getAllPostedProjectsbyMe(data){
          dispatch({type:actionType.GET_POSTED_PROJECTS_SUCCESS, payload: response.data})
        }
      }).catch((err) => {
-        dispatch({type:actionType.GET_POSTED_PROJECTS_FAILURE, payload: err.response.data})
+        dispatch({type:actionType.GET_POSTED_PROJECTS_FAILURE, payload: err.response})
      })
   }
 }
