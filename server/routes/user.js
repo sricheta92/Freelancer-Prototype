@@ -1,7 +1,7 @@
 var express = require('express');
 var pool = require('./../pool');
 var router = express.Router();
-
+var fs = require('fs-extra');
   router.get('/detail/:userid', (req,res) =>{
       var arr = []
       console.log("hello" +req);
@@ -155,4 +155,13 @@ var router = express.Router();
         });
       });
   });
+    router.get('/downloadFile', (req, res) => {
+      if(req.query.profilePicPath!='undefined'){
+        var buffer = fs.readFileSync(req.query.profilePicPath);
+        console.log(req.query.profilePicPath);
+        console.log(buffer);
+        var bufferBase64 = new Buffer(buffer);
+        res.status(200).send(bufferBase64);
+      }
+    });
     module.exports = router;

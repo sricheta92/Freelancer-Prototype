@@ -13,7 +13,7 @@ router.post('/withDetails', (req, res) => {
       "', '" + skill +
       "');", function(err,results, fields){
         if(err) throw err;
-        else res.send(200);
+        else res.status(200);
 
       });
     })
@@ -25,6 +25,7 @@ router.get('/allSkills', (req, res) => {
   pool.getConnection(function(err, connection){
 
       connection.query("select skill_id ,skill_name from skill;", function(err,rows){
+        connection.release();
         if(err) throw err;
         if(rows!=undefined && rows.length>0) {
           res.status(200).send({ skills: rows});

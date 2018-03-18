@@ -26,7 +26,21 @@
         var profilePic = "./uploads/" + req.body.profilePic;
         var bio = req.body.bio;
         var headline = req.body.headline;
-
+        console.log("update user set `firstname` = "+
+          "'"+fname+
+          "',"+ "`lastname` ="+
+          "'"+lname+
+            "',"+ "`city` ="+
+           "'"+city+
+             "',"+ "`phone` ="+
+             "'"+phone+
+           "',"+ "`profilePicPath` ="+
+            "'"+profilePic+
+            "',"+ "`bio` ="+
+             "'"+bio+
+             "',"+ "`prof_headline` ="+
+              "'"+headline+
+          "' where userid ="+userID+";");
         pool.getConnection(function(err, connection){
          connection.query("update user set `firstname` = "+
            "'"+fname+

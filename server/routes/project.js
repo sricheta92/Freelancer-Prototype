@@ -54,6 +54,7 @@
 
 
   router.get("/mapRecommendedProjects/:userId" ,function(req,res){
+    debugger
     var arr = [];
     var arr1 = [];
     var userBidded= [];
@@ -83,12 +84,32 @@
 
               connection.query("select * from freelancer.user u join freelancer.project_bid pb on u.userid = pb.user_id where pb.project_id = '" + row.project_id+ "';",  function(err, rows4){
                  if(rows4!= undefined && rows4.length >0){
+
+                   rows4.forEach(function(obj) {
+                     if(obj.profilePicPath!== null){
+                     console.log(obj);
+                     var buffer = fs.readFileSync(obj.profilePicPath);
+                     // console.log(obj.profilePicPath);
+                     // var bufferBase64 = new Buffer(buffer);
+                     // var arrayBufferView = new Uint8Array(bufferBase64 );
+                     //  var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
+                     //    var urlCreator = window.URL || window.webkitURL;
+                     //  var imageUrl = urlCreator.createObjectURL( blob );
+                     obj.encodeImage = buffer;
+                   }else{
+                     console.log(obj);
+                     var buffer = fs.readFileSync("./uploads/default/noimg.PNG");
+                     obj.encodeImage = buffer;
+                   }
+                   });
                    userBidded = rows4;
+
                  }
                });
 
              connection.query("select * from user u join project_user pu on u.userid = pu.user_id where pu.Role = 'Employer' and project_id = "+row.project_id +";",function(err,rows2){
                if(rows2 != undefined && rows2.length >0){
+
                  console.log(rows2.length);
                    arr.push({project: row, skills : arr1, postedBy : rows2[0], file : doc ,usersBidded : userBidded});
                    if(index === rows.length-1){

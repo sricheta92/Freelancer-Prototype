@@ -1,4 +1,5 @@
 import * as actionType from './ActionType';
+import fileDownload from 'react-file-download';
 import axios from 'axios';
 
 export function checkEmail(state) {
@@ -273,9 +274,34 @@ export function getRecommendedProjects(props){
   return function(dispatch){
     return axios.get("http://localhost:5000/project/mapRecommendedProjects/"+ props.userID ).then((response) => {
        if( response.data){
-         dispatch({type:actionType.GET_RECOMMENDED_PROJECTS_SUCCESS, payload: response.data})
+
+
+         response.data.projectsWithSkills.map(project  =>{
+           if(project!= undefined){
+              if( project.usersBidded!= undefined){
+                    project.usersBidded.map(user =>{
+                      if(user.encodeImage!=undefined){
+                        var arrayBufferView = new Uint8Array(user.encodeImage );
+                        var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
+                        var urlCreator = window.URL || window.webkitURL;
+                        var imageUrl = urlCreator.createObjectURL( blob );
+                        user.bloburl = imageUrl;
+                      }else{
+                        user.bloburl
+                      }
+
+                 });
+              }
+         }
+
+         });
+
+          dispatch({type:actionType.GET_RECOMMENDED_PROJECTS_SUCCESS, payload: response.data})
        }
+
+
      }).catch((err) => {
+       throw err;
         dispatch({type:actionType.GET_RECOMMENDED_PROJECTS_FAILURE, payload: err.response.data})
      })
   }
@@ -362,4 +388,21 @@ export function getUserDetails(data){
         dispatch({type:actionType.GET_USER_DETAIL_FAILURE, payload: err.response})
      })
   }
+}
+
+export function downloadFile(fileName){
+	return function(dispatch){
+		return axios.get("http://localhost:5000/user/downloadFile?profilePicPath="+fileName, { responseType: 'arraybuffer' }).then((response) => {
+			// fileDownload(response.data, "profilepic.jpg");
+
+       var arrayBufferView = new Uint8Array( response.data );
+       var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
+       var urlCreator = window.URL || window.webkitURL;
+       var imageUrl = urlCreator.createObjectURL( blob );
+
+			 dispatch({type:actionType.FILE_DOWNLAOD_SUCCESS, payload: imageUrl})
+		}).catch((err) => {
+			 dispatch({type:actionType.FILE_DOWNLAOD_FAIL, payload: err.response})
+		})
+	}
 }

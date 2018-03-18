@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
   return {
       skills: state.skillReducer.skills,
-      userID :state.signupReducer.userID,
+      userID : localStorage.getItem("userid") ? localStorage.getItem("userid") :  state.signupReducer.userID,
       uploadname :state.postProjectReducer.uploadname,
       originalname :state.postProjectReducer.originalname
 
@@ -103,24 +103,24 @@ class ProfileStep2 extends Component{
                   <div class="form-group CompleteProfile-form-row">
                       <span class="CompleteProfile-form-header">Full Name</span>
                       <span class="CompleteProfile-form-input">
-                          <input class="CompleteProfile-form-input-left large-input " ref= "fname" type="text" placeholder="First Name" required/>
-                          <input class="CompleteProfile-form-input-right large-input " ref= "lname" type="text" placeholder="Last Name" required/>
+                          <input class="CompleteProfile-form-input-left large-input " value ="Ram" ref= "fname" type="text" placeholder="First Name" required/>
+                          <input class="CompleteProfile-form-input-right large-input " value ="sihngh"  ref= "lname" type="text" placeholder="Last Name" required/>
                       </span>
 
                   </div>
                   <div class="form-group CompleteProfile-form-row">
                       <span class="CompleteProfile-form-header">Bio and Professional Headline </span>
                       <span class="CompleteProfile-form-input">
-                          <textarea class="CompleteProfile-form-input-left large-input " ref= "bio" type="text" placeholder="Bio" required/>
-                          <input class="CompleteProfile-form-input-right large-input " ref= "headline" type="text" placeholder="designation" required/>
+                          <textarea class="CompleteProfile-form-input-left large-input " value ="Developer"  ref= "bio" type="text" placeholder="Bio" required/>
+                          <input class="CompleteProfile-form-input-right large-input " value ="Frontend engineer" ref= "headline" type="text" placeholder="designation" required/>
                       </span>
 
                   </div>
                   <div class="form-group CompleteProfile-form-row gap">
                       <span class="CompleteProfile-form-header">Contact Information</span>
                       <span class="CompleteProfile-form-input">
-                          <input class="CompleteProfile-form-input-left large-input " type="text"  ref= "phone" pattern="^\d{3}-\d{3}-\d{4}$"  placeholder="Phone Number (format: xxx-xxx-xxxx)" required />
-                          <input class="CompleteProfile-form-input-right large-input " type="text" ref="city" placeholder="City" required/>
+                          <input class="CompleteProfile-form-input-left large-input " type="text"  value = "999-999-9999" ref= "phone" pattern="^\d{3}-\d{3}-\d{4}$"  placeholder="Phone Number (format: xxx-xxx-xxxx)" required />
+                          <input class="CompleteProfile-form-input-right large-input " type="text" value = "San Jose"ref="city" placeholder="City" required/>
                       </span>
 
                   </div>

@@ -2,6 +2,7 @@
   "name": "freelancer",
   "version": "1.0.0",
   "scripts": {
+    "test": "mocha",
     "client": "cd ../client && yarn start",
     "server": "nodemon --inspect server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
@@ -22,7 +23,12 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nodemon": "*",
+    "supertest": "^3.0.0",
+    "fs-extra": "*"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"

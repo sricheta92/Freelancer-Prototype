@@ -27,7 +27,8 @@ export function userReducer(state={}, action){
       case actionType.GET_USER_DETAIL_FAILURE : newState.user = undefined;
                                                 newState.skill = action.payload.skill;
                                                 return newState;
-
+      case actionType.FILE_DOWNLAOD_SUCCESS : newState.profilePic = action.payload;
+                                                return newState;
       default : return newState;
   }
 }

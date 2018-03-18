@@ -33,7 +33,7 @@ class ProjectFeedItem extends Component{
 
   navigateToUserDetails(postedby){
     this.props.dispatch(this.props.getUserDetails(postedby.userid))
-    .then(()=>this.props.history.push("/user/"+ postedby.username ));
+    .then(() => this.props.history.push("/user/"+ postedby.username ));
   }
 
   render(){
