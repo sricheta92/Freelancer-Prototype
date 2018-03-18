@@ -99,7 +99,7 @@ class UserProfile extends Component {
             <div>
                 <div className="container-fluid">
                     <div className= "text-left float-left"><h3>User Details</h3></div>
-                    <img src={this.props.profilePic}/>
+                    <img height = "42" src={this.props.profilePic}/>
                     <div><button className="btn btn-primary float-right" onClick={this.editprofile}>Edit Profile</button></div>
                 </div>
                 <div className="container-fluid panel panel-default border text-left">

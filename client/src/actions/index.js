@@ -280,16 +280,13 @@ export function getRecommendedProjects(props){
            if(project!= undefined){
               if( project.usersBidded!= undefined){
                     project.usersBidded.map(user =>{
-                      if(user.encodeImage!=undefined){
-                        var arrayBufferView = new Uint8Array(user.encodeImage );
+
+                        var arrayBufferView = new Uint8Array(user.encodeImage.data );
                         var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
                         var urlCreator = window.URL || window.webkitURL;
                         var imageUrl = urlCreator.createObjectURL( blob );
                         user.bloburl = imageUrl;
-                      }else{
-                        user.bloburl
-                      }
-
+                    
                  });
               }
          }

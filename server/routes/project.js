@@ -89,17 +89,19 @@
                      if(obj.profilePicPath!== null){
                      console.log(obj);
                      var buffer = fs.readFileSync(obj.profilePicPath);
+                       var bufferBase64 = new Buffer(buffer);
                      // console.log(obj.profilePicPath);
                      // var bufferBase64 = new Buffer(buffer);
                      // var arrayBufferView = new Uint8Array(bufferBase64 );
                      //  var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
                      //    var urlCreator = window.URL || window.webkitURL;
                      //  var imageUrl = urlCreator.createObjectURL( blob );
-                     obj.encodeImage = buffer;
+                     obj.encodeImage = bufferBase64;
                    }else{
                      console.log(obj);
                      var buffer = fs.readFileSync("./uploads/default/noimg.PNG");
-                     obj.encodeImage = buffer;
+                     var bufferBase64 = new Buffer(buffer);
+                     obj.encodeImage = bufferBase64;
                    }
                    });
                    userBidded = rows4;

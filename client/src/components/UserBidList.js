@@ -61,7 +61,7 @@ class UserBidList extends Component{
           <div id="bid-list" class="Grid-col Grid-col--12 bid-list-freelancerWrapper  wider">
           {this.props.users.map(user =>
             <div class="bid " >
-              <a onClick = {()=> {this.navigateToUserDetails(user)}}>{user.username}</a>
+              <img src = {user.bloburl} height="42"></img><a onClick = {()=> {this.navigateToUserDetails(user)}}>{user.username}</a>
               <div className="bid-sum-header1">${user.bid_price} in {user.bid_days} days</div>
               <div>{localStorage.getItem("role") === 'Employer' ?<div>Hire Now!</div> :null}</div>
             </div>
