@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
+import FixedNav from './FixedNav';
 import {Typeahead} from 'react-bootstrap-typeahead';
 import { getAllSkills ,downloadFile} from '../actions';
 
@@ -97,6 +98,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div>
+            <FixedNav />
                 <div className="container-fluid">
                     <div className= "text-left float-left"><h3>User Details</h3></div>
                     <img height = "42" src={this.props.profilePic}/>
@@ -137,7 +139,7 @@ class UserProfile extends Component {
                                                                                            }}></input>
                     </div>
                     <div className="row ">
-                        <div className="col-sm-2 font-weight-bold">About Me:</div><input type="text" className="col-sm-4"  value={this.props.user[0].prof_headline} disabled = {this.state.disabletags.aboutme}
+                        <div className="col-sm-2 font-weight-bold">About Me:</div><input type="text" value = "Software Developer" className="col-sm-4"   disabled = {this.state.disabletags.aboutme}
                                                                                          onChange={(event) => {
                                                                                              this.setState({
                                                                                                  userdetails: {

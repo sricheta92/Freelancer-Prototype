@@ -63,7 +63,7 @@ class UserBidList extends Component{
             <div class="bid " >
               <img src = {user.bloburl} height="42"></img><a onClick = {()=> {this.navigateToUserDetails(user)}}>{user.username}</a>
               <div className="bid-sum-header1">${user.bid_price} in {user.bid_days} days</div>
-              <div>{localStorage.getItem("role") === 'Employer' ?<div>Hire Now!</div> :null}</div>
+              {localStorage.getItem("role") === 'Employer' ?<span className = "btn btn-info hire12">Hire Now!</span> :null}
             </div>
           )}
           </div> : <div>No freelancer bidded yet for this project!</div> }

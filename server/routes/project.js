@@ -90,12 +90,7 @@
                      console.log(obj);
                      var buffer = fs.readFileSync(obj.profilePicPath);
                        var bufferBase64 = new Buffer(buffer);
-                     // console.log(obj.profilePicPath);
-                     // var bufferBase64 = new Buffer(buffer);
-                     // var arrayBufferView = new Uint8Array(bufferBase64 );
-                     //  var blob = new Blob( [ arrayBufferView ], { type: "image/jpg" } );
-                     //    var urlCreator = window.URL || window.webkitURL;
-                     //  var imageUrl = urlCreator.createObjectURL( blob );
+                  
                      obj.encodeImage = bufferBase64;
                    }else{
                      console.log(obj);

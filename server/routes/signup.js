@@ -50,7 +50,7 @@
             "'"+city+
               "',"+ "`phone` ="+
               "'"+phone+
-            "',"+ "`profile-pic-path` ="+
+            "',"+ "`profilePicPath` ="+
              "'"+profilePic+
              "',"+ "`bio` ="+
               "'"+bio+

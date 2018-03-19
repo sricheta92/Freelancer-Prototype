@@ -16,7 +16,7 @@ const mapStateToProps = (state) =>{
     originalname :state.postProjectReducer.originalname,
     username :state.signupReducer.username,
     projectid :state.postProjectReducer.projectid,
-    userID : state.signupReducer.userID,
+    userID : state.loginReducer.userID,
     projectfailMsg : state.postProjectReducer.projectfailMsg
 
   }

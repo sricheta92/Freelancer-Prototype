@@ -121,13 +121,13 @@ class FixedNav extends Component{
             <li><a    onClick= { this.goToDashBoard }>Dashboard</a></li>
             <li><a href="#">Inbox</a></li>
           </ul>
-            <button className="btn navbar-btn btn-pull-right">Post a Project</button>
+            <button onClick={() => { this.props.history.push("/postproject");}} className="btn navbar-btn btn-pull-right">Post a Project</button>
         </div>
 
 
       </nav>
 
-    
+
     </div>
 
   )
