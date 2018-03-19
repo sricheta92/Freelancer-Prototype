@@ -94,7 +94,6 @@ class UserProfile extends Component {
       this.props.dispatch(this.props.downloadFile(this.props.user[0].profilePicPath))
     }
 
-
     render() {
         return (
             <div>
